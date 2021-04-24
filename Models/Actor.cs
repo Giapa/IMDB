@@ -1,5 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using MvcMovie.Models;
+using MvcSeries.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MvcActor.Models
 {
@@ -14,5 +17,13 @@ namespace MvcActor.Models
 
         [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
+
+        [ForeignKey("Id")]
+        public Movie Movie {get;set;}
+        public int MovieId {get;set;}
+
+        [ForeignKey("Id")]
+        public Series Series {get;set;}
+        public int SeriesId {get;set;}
     }
 }

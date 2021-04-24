@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using MvcMovie.Models;
+using MvcSeries.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MvcComments.Models
@@ -17,5 +18,9 @@ namespace MvcComments.Models
         [ForeignKey("Id")]
         public Movie Movie {get;set;}
         public int MovieId {get;set;}
+
+        [ForeignKey("Id")]
+        public Series Series {get;set;}
+        public int SeriesId {get;set;}
     }
 }

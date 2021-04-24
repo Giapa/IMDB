@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using MvcComments.Models;
+using MvcActor.Models;
 using System.Collections.Generic;
 
 namespace MvcMovie.Models{
@@ -16,5 +17,6 @@ namespace MvcMovie.Models{
         public decimal Rating { get; set; }
         public decimal Budget { get; set; }
         public List<Comments> Comments {get; set;}
+        public List<Actor> Actors {get; set;}
     }
 }

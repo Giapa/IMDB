@@ -1,6 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using MvcComments.Models;
+using MvcActor.Models;
 
 namespace MvcSeries.Models
 {
@@ -15,5 +17,7 @@ namespace MvcSeries.Models
         public int Seasons { get; set; }
         public string Genre { get; set; }
         public decimal Rating { get; set; }
+        public List<Comments> Comments {get; set;}
+        public List<Actor> Actors {get; set;}
     }
 }
