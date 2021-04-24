@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using MvcMovie.Data;
 using MvcActor.Data;
 using MvcSeries.Data;
+using MvcComments.Data;
 using System.Threading.Tasks;
 using ElectronNET.API;
 using ElectronNET.API.Entities;
@@ -33,6 +34,8 @@ namespace IMDB
             services.AddDbContext<MvcActorContext>(options =>
                 options.UseNpgsql(GetHerokuConnectionString()));
             services.AddDbContext<MvcSeriesContext>(options =>
+                options.UseNpgsql(GetHerokuConnectionString()));
+            services.AddDbContext<MvcCommentsContext>(options =>
                 options.UseNpgsql(GetHerokuConnectionString()));
         }
 
