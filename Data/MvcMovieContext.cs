@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MvcMovie.Models;
 using Newtonsoft.Json.Linq;
 using System;
+using MvcComments.Models;
 
 namespace MvcMovie.Data
 {
@@ -47,6 +48,9 @@ namespace MvcMovie.Data
                     counter += 1;
                 }
             }
+            modelBuilder.Entity<Comments>().HasKey(c => c.Id);
+            modelBuilder.Entity<Movie>().HasKey(m => m.Id);
+            modelBuilder.Entity<Comments>().HasOne(m => m.Movie).WithMany(c => c.Comments).HasForeignKey(m => m.MovieId);
         }
 
         public DbSet<Movie> Movie { get; set; }
