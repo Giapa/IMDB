@@ -47,7 +47,7 @@
                                 <form asp-action="LikeSeries" asp-controller="Series" asp-route-SeriesId="@Model.Series.Id">
                                     <input type="image" src="~/img/like.png" alt="Submit" value="Like" width="40" height="40">
                                 </form>
-                                <form asp-action="DislikeSeries" asp-controller="Series" asp-route-Series="@Model.Series.Id">
+                                <form asp-action="DislikeSeries" asp-controller="Series" asp-route-SeriesId="@Model.Series.Id">
                                     <input type="image" src="~/img/dislike.png" alt="Submit" value="Dislike" width="40" height="40">
                                 </form>
                             </div>

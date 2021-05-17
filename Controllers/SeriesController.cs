@@ -114,13 +114,13 @@ namespace IMDB.Controllers
                 var newList = new List<string>();
                 newList.Add(user);
                 series.Dislikes = newList;
-                series.Votes = series.Votes + 1;
+                series.Votes = series.Votes - 1;
                 _context.SaveChanges();
             }else if(!series.Dislikes.ToList().Contains(user)){
                 var newList = series.Dislikes.ToList();
                 newList.Add(user);
                 series.Dislikes = newList;
-                series.Votes = series.Votes + 1;
+                series.Votes = series.Votes - 1;
                 _context.SaveChanges();
             }
             return LocalRedirect("/Series/Details/" + SeriesId);
