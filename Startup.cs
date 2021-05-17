@@ -44,7 +44,8 @@ namespace IMDB
         }
 
         private string GetHerokuConnectionString() {
-            string connectionUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            // string connectionUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            string connectionUrl = "postgres://obpbfczizjlyba:d38ff371a3ce6923976d077d6747d1a3956b799fca8485503088d279e42e4713@ec2-99-80-200-225.eu-west-1.compute.amazonaws.com:5432/d9ai4prm99v142";
             var databaseUri = new Uri(connectionUrl);
             string db = databaseUri.LocalPath.TrimStart('/');
             string[] userInfo = databaseUri.UserInfo.Split(':', StringSplitOptions.RemoveEmptyEntries);
@@ -64,11 +65,8 @@ namespace IMDB
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
 

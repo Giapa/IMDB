@@ -147,7 +147,12 @@
                             <h5 class="card-title font-weight-bold text-truncate text-white">@item.FirstName  @item.LastName</h5>
                             <div>
                                 <p class="card-text"><strong>Birthday:</strong> @item.Birthday.ToString("dd/MM/yyyy")</p>
-                                <p class="card-text"><strong>Bio:</strong> @item.Bio.Substring(0,20)...</p>
+                                @if (@item.Bio.Length > 30)
+                                {
+                                    <p class="card-text"><strong>Bio:</strong> @item.Bio.Substring(0,20)...</p>
+                                } else {
+                                    <p class="card-text"><strong>Bio:</strong> @item.Bio</p>
+                                }
                             </div> <br>
                             <a class="btn btn-warning" asp-controller="Actor" asp-action="Details" asp-route-id="@item.Id">More info</a>
                         </div>

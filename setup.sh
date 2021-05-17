@@ -1,5 +1,3 @@
-heroku pg:reset DATABASE -a adopse-imdb --confirm adopse-imdb
-
 dotnet ef migrations add InitialCreate --context MvcMovieContext
 
 dotnet ef migrations add InitialCreate --context MvcSeriesContext

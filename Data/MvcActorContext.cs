@@ -17,10 +17,10 @@ namespace MvcActor.Data
         public void seedActors(ModelBuilder modelBuilder){
             JArray actorsObject = new JArray();
 
-            string detailsUrlParameters = $"?api_key={Environment.GetEnvironmentVariable("API")}&language=en-US";
-            for (int i = 1; i < 50; i++) {
+            string detailsUrlParameters = $"?api_key=e8aa54218562d4d13c49fea81693c67b&language=en-US";
+            for (int i = 1; i < 150; i++) {
                 const string URL = "https://api.themoviedb.org/3/person/popular";
-                string urlParameters = $"?api_key={Environment.GetEnvironmentVariable("API")}&language=en-US&page={i}";
+                string urlParameters = $"?api_key=e8aa54218562d4d13c49fea81693c67b&language=en-US&page={i}";
                 var seriesReponse = HTTP.Response.returnResponse(URL, urlParameters);
                 actorsObject.Merge((JArray)seriesReponse["results"]);
             }
@@ -39,13 +39,16 @@ namespace MvcActor.Data
                 actor.Bio = (string)detailsResponse["biography"];
                 actor.Birthday = DateTime.Parse((string)detailsResponse["birthday"] ?? "10/10/2010");
                 actor.Profile_pic_path = (string)detailsResponse["profile_path"];
-                modelBuilder.Entity<Actor>().HasData(actor);
+                var poster = (string)detailsResponse["profile_path"];
+                if(poster != null && poster != ""){
+                    modelBuilder.Entity<Actor>().HasData(actor);
+                }
                 counter += 1;
             };
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            seedActors(builder);
+            // seedActors(builder);
         }
         public DbSet<Actor> Actor { get; set; }
     };
